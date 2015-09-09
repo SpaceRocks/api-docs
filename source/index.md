@@ -48,7 +48,7 @@ Anyone can register for an api.data.gov key, which can be used to access data ac
 
 # Earth
 
-A recent industry [report](https://www.fgdc.gov/ngac/meetings/december-2014/ngac-landsat-economic-value-paper-2014-update.pdf) estimates that total annual value of $2.19 billion, far exceeding the multi-year total cost of building, launching, and managing Landsat satellites and sensors.  The value is derived from consumer *use* of the data.  There is no inherent value in idle data.  The objective of this endpoint is to unlock the significant public investment in earth observation data.  This open and documented API should dramatically reduce the transaction costs to engage with the imagery.The API is powered by Google Earth Engine, and currently only supports pan-sharpened Landsat 8 imagery. 
+A recent industry [report](https://www.fgdc.gov/ngac/meetings/december-2014/ngac-landsat-economic-value-paper-2014-update.pdf) estimates that total annual value of $2.19 billion, far exceeding the multi-year total cost of building, launching, and managing Landsat satellites and sensors.  The value is derived from consumer *use* of the data.  There is no inherent value in idle data.  The objective of this endpoint is to unlock the significant public investment in earth observation data.  This open and documented API should dramatically reduce the transaction costs to engage with the imagery.The API is powered by Google Earth Engine, and currently only supports pan-sharpened Landsat 8 imagery.
 
 **Example image:**
 
@@ -195,3 +195,61 @@ api_key | string | DEMO_KEY | api.data.gov key for expanded usage
 ### Example query
 [`https://api.data.gov/nasa/patents/content?query=temperature&limit=5&api_key=DEMO_KEY`](https://api.data.gov/nasa/patents/content?query=temperature&limit=5&api_key=DEMO_KEY)
 
+# Asteroids - NeoWs
+
+NeoWs (Near Earth Object Web Service) is a Hypermedia RESTful web service for near earth Asteroid information.
+With NeoWs a user can: search for Asteroids based on their closest approach date to Earth, lookup a specific Asteroids bases on its NASA JPL small body id, as
+well as browse the overall data-set.
+
+Data-set: All the data is from the NASA JPL Asteroid team (http://neo.jpl.nasa.gov/).
+
+Interactive Api documentation
+[`http://<PROXY URL>`](http://<PROXY URL>)
+
+## Feed
+
+Retrieve a list of Asteroids based on their closest approach date to Earth.
+
+### HTTP Request
+
+`GET www.api.data.gov:8080/rest/v1/feed?start_date=<STAT_DATE>&end_date=<END_DATE>`
+
+### Query Parameters
+
+Parameter | Type | Default | Description
+--------- | --------- | ------- | -----------
+start_date | String | none | starting date for asteroid search
+end_date | String | 7 days after start_date | ending date for asteroid search
+
+### Example query
+
+[`http://<PROXY URL>/rest/v1/feed?start_date=2015-09-07&end_date=2015-09-08`](http://<PROXY URL>/rest/v1/feed?start_date=2015-09-07&end_date=2015-09-08)
+
+## Neo - lookup
+
+Lookup a specific Asteroid based on its NASA JPL small body (SPK-ID) ID
+
+### HTTP Request
+
+`GET www.api.data.gov:8080/rest/v1/neo/<Astetoid_ID>`
+
+### Example query
+
+[`http://<PROXY URL>/rest/v1/neo/3542519`](http://<PROXY URL>/rest/v1/neo/3542519)
+
+### Path Parameters
+
+Parameter | Type | Default | Description
+--------- | --------- | ------- | -----------
+astetoid_id | String | none | Asteroid SPK-ID correlates to the NASA JPL small body
+
+## Neo - Browse
+
+Browse the overall Asteroid data-set
+### HTTP Request
+
+`GET www.api.data.gov:8080/rest/v1/neo/browse/`
+
+### Example query
+
+[`http://<PROXY URL>/rest/v1/neo/browse/`](<PROXY URL>/rest/v1/neo/browse/)
