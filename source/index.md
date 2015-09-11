@@ -198,21 +198,21 @@ api_key | string | DEMO_KEY | api.data.gov key for expanded usage
 # Asteroids - NeoWs
 
 NeoWs (Near Earth Object Web Service) is a Hypermedia RESTful web service for near earth Asteroid information.
-With NeoWs a user can: search for Asteroids based on their closest approach date to Earth, lookup a specific Asteroids bases on its NASA JPL small body id, as
+With NeoWs a user can: search for Asteroids based on their closest approach date to Earth, lookup a specific Asteroid with its NASA JPL small body id, as
 well as browse the overall data-set.
 
 Data-set: All the data is from the NASA JPL Asteroid team (http://neo.jpl.nasa.gov/).
 
-Interactive Api documentation
+Interactive api documentation
 [`http://<PROXY URL>`](http://<PROXY URL>)
 
-## Feed
+## Neo - Feed
 
 Retrieve a list of Asteroids based on their closest approach date to Earth.
 
 ### HTTP Request
 
-`GET www.api.data.gov:8080/rest/v1/feed?start_date=<STAT_DATE>&end_date=<END_DATE>`
+`GET <PROXY URL>/rest/v1/feed?start_date=<STAT_DATE>&end_date=<END_DATE>`
 
 ### Query Parameters
 
@@ -231,7 +231,7 @@ Lookup a specific Asteroid based on its NASA JPL small body (SPK-ID) ID
 
 ### HTTP Request
 
-`GET www.api.data.gov:8080/rest/v1/neo/<Astetoid_ID>`
+`GET <PROXY URL>/rest/v1/neo/<Astetoid_ID>`
 
 ### Example query
 
